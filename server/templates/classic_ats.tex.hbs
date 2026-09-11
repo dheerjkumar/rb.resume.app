@@ -1,0 +1,174 @@
+%------------------------
+% Resume Builder Platform — Classic ATS Template (Handlebars-driven)
+% Based on classic_ats_template.tex from the project root.
+% Variables injected by server/utils/latexGenerator.js
+%------------------------
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{fontawesome5}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.0in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.2in}
+
+\urlstyle{rm}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\hrule height 0.5pt \vspace{-4pt}]
+
+% --- CUSTOM COMMANDS ---
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{#3} & \textit{#4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \begin{tabular}[t]{@{}l@{}}#1\end{tabular} & \textit{#2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-----------------------------
+\begin{document}
+
+%----------HEADING-----------------
+\begin{minipage}[c]{{{#if logoPath}}}0.72{{else}}0.75{{/if}}\textwidth}
+    \textbf{\Huge {{name}}} \\ \vspace{5pt}
+    \small
+    {{#if phone}}\faPhone\ {{phone}}{{#if email}} ~ $|$ ~ {{/if}}{{/if}}
+    {{#if email}}\href{mailto:{{email}}}{\faEnvelope\ {{emailEsc}}}{{/if}}
+    \\[2pt]
+    {{#each links}}
+    \href{{{{url}}}}{\faLink\ {{label}}}{{#unless @last}} ~ $|$ ~ {{/unless}}
+    {{/each}}
+\end{minipage}%
+\begin{minipage}[c]{{{#if logoPath}}}0.28{{else}}0.25{{/if}}\textwidth}
+    \raggedleft
+    {{#if photoPath}}
+    \includegraphics[width=2.5cm, height=2.5cm, keepaspectratio]{{{photoPath}}}
+    {{/if}}
+    {{#if logoPath}}
+    \includegraphics[width=2.2cm, height=2.2cm, keepaspectratio]{{{logoPath}}}
+    {{/if}}
+\end{minipage}
+\vspace{-4pt}
+
+%-----------EDUCATION-----------------
+{{#if education.length}}
+\section{Education}
+  \resumeSubHeadingListStart
+    {{#each education}}
+    \resumeSubheading
+      {{{{institution}}}}{{{{location}}}}
+      {{{{degree}}}}{{{{duration}}}}
+      {{#if score}}\vspace{-3pt} \\ (Score / CGPA : {{score}})\vspace{-9pt}{{/if}}
+    {{/each}}
+  \resumeSubHeadingListEnd
+{{/if}}
+
+%-----------EXPERIENCE-----------------
+{{#if experience.length}}
+\section{Experience}
+  \resumeSubHeadingListStart
+    {{#each experience}}
+    \resumeSubheading
+      {{{{company}}}}{{{{location}}}}
+      {{{role}}}{{#if link}} $|$ \href{{{{link}}}}{\textbf{\emph{{{{linkEsc}}}}}}{{{/if}}}{{{{duration}}}}
+      {{#if bulletsLatex}}
+      \resumeItemListStart
+{{{bulletsLatex}}}
+      \resumeItemListEnd
+      {{/if}}
+    {{/each}}
+  \resumeSubHeadingListEnd
+{{/if}}
+
+%-----------PROJECTS-----------------
+{{#if projects.length}}
+\section{Projects}
+  \resumeSubHeadingListStart
+    {{#each projects}}
+    \resumeProjectHeading
+      {\textbf{{{{title}}}}{{#if link}} $|$ \href{{{{link}}}}{\textbf{\emph{{{{linkLabel}}}}}}{{/if}} \\ \small\emph{{{{technologies}}}}}{{{{duration}}}}
+      {{#if bulletsLatex}}
+      \resumeItemListStart
+{{{bulletsLatex}}}
+      \resumeItemListEnd
+      {{/if}}
+    {{/each}}
+  \resumeSubHeadingListEnd
+{{/if}}
+
+%-----------SKILLS-----------------
+{{#if skills.length}}
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     {{#each skills}}\textbf{{{{category}}}}{: {{items}}}{{#unless @last}} \\
+     {{/unless}}{{/each}}
+    }}
+ \end{itemize}
+{{/if}}
+
+%-----------HONORS & AWARDS-----------------
+{{#if achievements.length}}
+\section{Honors and Awards}
+  \resumeSubHeadingListStart
+    {{#each achievements}}
+    \resumeSubheading
+      {{{{title}}}}{{{{organization}}}}
+      {{{{description}}}}{{{{date}}}}
+    {{/each}}
+  \resumeSubHeadingListEnd
+{{/if}}
+
+%-----------EXTRACURRICULAR-----------------
+{{#if hobbies.length}}
+\section{Extracurricular Activities}
+  \resumeSubHeadingListStart
+    {{#each hobbies}}
+    \resumeProjectHeading
+      {\textbf{{{{name}}}}{{#if role}} $|$ \emph{{{{role}}}}{{/if}}}{}
+    {{/each}}
+  \resumeSubHeadingListEnd
+{{/if}}
+
+\end{document}

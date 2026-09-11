@@ -1,0 +1,171 @@
+%------------------------
+% Author : RB (Resume Builder) Platform Template
+%------------------------
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{graphicx} 
+\usepackage{fontawesome5} % Required for social and contact icons
+
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjusted margins for a guaranteed single page
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.0in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.2in}
+
+\urlstyle{rm}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting (Enhanced horizontal line under every major heading)
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\hrule height 0.5pt \vspace{-4pt}]
+
+% --- CUSTOM COMMANDS ---
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{#3} & \textit{#4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \begin{tabular}[t]{@{}l@{}}#1\end{tabular} & \textit{#2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-----------------------------
+%%%%%%   CV STARTS HERE   %%%%%%
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{minipage}[c]{0.75\textwidth}
+    \textbf{\Huge Alex Developer} \\ \vspace{5pt}
+    \small 
+    % Phone and Email
+    \faPhone\ +1-555-0123-4567 ~ $|$ ~ 
+    \href{mailto:alex.developer@example.com}{\faEnvelope\ alex.developer@example.com} \\ \vspace{2pt}
+    % Clickable Profile Links with Icons
+    \href{https://linkedin.com/in/alexdev}{\faLinkedin\ LinkedIn} ~ $|$ ~ 
+    \href{https://github.com/alexdev}{\faGithub\ GitHub} ~ $|$ ~ 
+    \href{https://leetcode.com/u/alexdev/}{\faCode\ LeetCode} ~ $|$ ~ 
+  \href{https://www.geeksforgeeks.org/profile/alexdev}{\faCode\ Portfolio}
+\end{minipage}%
+\begin{minipage}[c]{0.25\textwidth}
+    \raggedleft
+    % INSTRUCTION: Profile picture integration via Cloudinary will go here
+    % \includegraphics[width=2.5cm, height=2.5cm]{placeholder_avatar.jpg}
+\end{minipage}
+\vspace{-4pt}
+
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Global Institute of Technology}{New York, USA}
+      {Bachelor of Science in Computer Science}{August 2020 -- May 2024}
+      \vspace{-3pt} \\ (CGPA : 3.85/4.0)
+      \vspace{-9pt} 
+      
+    \resumeSubheading
+      {Riverside High School}{Chicago, IL}
+      {Advanced Placement Curriculum - Percentage: 95.0\%}{Passed: June 2020}
+      
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Tech Innovations Inc.}{Remote}
+      {Software Engineering Intern $|$ \href{https://github.com/alexdev/internship-project}{\textbf{\emph{GitHub}}}}{June 2023 -- August 2023}
+      \resumeItemListStart
+        \resumeItem{\textbf{Full-Stack Platform Integration (React, Node.js, PostgreSQL):} Developed scalable RESTful APIs connecting the client dashboard to backend services, reducing data load times by 20\%.}
+        \resumeItem{Engineered a secure \textbf{OAuth 2.0} authentication flow to manage user sessions and protect sensitive client data across the application.}
+        \resumeItem{Implemented comprehensive \textbf{unit testing} utilizing Jest and React Testing Library, achieving 85\% code coverage before deployment.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------------
+\section{Projects}
+  \resumeSubHeadingListStart
+
+  % --- Sample Project ---
+    \resumeProjectHeading
+      {\textbf{Smart E-Commerce Dashboard} $|$ \href{https://ecommerce-live.vercel.app/}{\textbf{\emph{Live Link}}} \\ \small\emph{React.js, Tailwind CSS, Redux, MongoDB, Express}}{January 2024 -- March 2024}
+      \resumeItemListStart
+        \resumeItem{Engineered a production-ready vendor dashboard using \textbf{React.js}, integrating dynamic charts to visualize sales data in real-time.}
+        \resumeItem{Architected a centralized \textbf{State Management} system utilizing Redux Toolkit to synchronize user inventory data across decoupled UI components.}
+        \resumeItem{Configured an automated \textbf{CI/CD pipeline} via \textbf{Vercel}, managing secure deployment and environment variables.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------SKILLS-----------------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: JavaScript, TypeScript, Python, Java, SQL} \\
+     \textbf{Web Technologies}{: HTML5, CSS3, REST APIs, GraphQL} \\
+     \textbf{Libraries/Frameworks}{: React.js, Node.js, Express.js, Tailwind CSS} \\
+     \textbf{Database \& Tools}{: MongoDB, PostgreSQL, Git, Docker, AWS} \\
+     \textbf{Core Concepts}{: Microservices, Agile Methodology, System Design, CI/CD}
+    }}
+ \end{itemize}
+
+%-----------HONORS & AWARDS-----------------
+\section{Honors and Awards}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Dean's Merit List}{Global Institute of Technology}
+      {Awarded for maintaining a GPA within the top 5\% of the engineering cohort}{2022 \& 2023}
+  \resumeSubHeadingListEnd
+
+%-----------EXTRACURRICULAR-----------------
+\section{Extracurricular Activities}
+  \resumeSubHeadingListStart
+   
+    \resumeProjectHeading
+      {\textbf{University Open Source Club} $|$ \emph{Lead Contributor}}{}
+      
+    \resumeProjectHeading
+      {\textbf{Global Hackathon Series} $|$ \emph{Finalist}}{}
+      
+  \resumeSubHeadingListEnd
+
+\end{document}

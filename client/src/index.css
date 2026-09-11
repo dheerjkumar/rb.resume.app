@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #aa3bff;
+  --color-accent-bg: #fdfa3b;
+}
+
+@layer components {
+  /* Resume Section Overrides for react-grid-layout */
+  .react-grid-item.react-grid-placeholder {
+    background: var(--color-accent) !important;
+    opacity: 0.2;
+  }
+
+  /* Classic ATS Typography and Layout */
+  .template-classic-ats {
+    font-family: 'Times New Roman', Times, serif;
+    color: #000;
+  }
+  
+  .template-classic-ats h1,
+  .template-classic-ats h2,
+  .template-classic-ats h3,
+  .template-classic-ats h4 {
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .template-classic-ats .section-heading {
+    @apply border-b border-black uppercase text-sm font-bold tracking-wider mb-1 mt-3;
+  }
+
+  .template-classic-ats .resume-section {
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .template-classic-ats .resume-section:hover {
+    border-color: #e5e7eb;
+    background-color: #f9fafb;
+    cursor: move;
+  }
+}
