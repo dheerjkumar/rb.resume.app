@@ -23,7 +23,11 @@ export const SocketProvider = ({ children }) => {
   useEffect(() => {
     let newSocket;
     if (user) {
-      newSocket = io(import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000', {
+      // Socket.io must connect to the root domain, not the /api path namespace
+      const rawUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+      const socketUrl = rawUrl.replace(/\/api\/?$/, '');
+      
+      newSocket = io(socketUrl, {
         withCredentials: true
       });
       

@@ -21,6 +21,9 @@ initSocket(server);
 
 const PORT = process.env.PORT || 5000;
 
+// Trust the reverse proxy (Render load balancer) so secure cookies can be set
+app.set('trust proxy', 1);
+
 app.use(cors({
   origin: process.env.CLIENT_URL || 'http://localhost:5173',
   credentials: true,
