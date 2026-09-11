@@ -7,7 +7,7 @@ const { emitNotification } = require('../socket');
 
 const router = express.Router();
 
-// ── GET /api/posts/feed ──────────────────────────────────────────────────────
+// â”€â”€ GET /api/posts/feed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 router.get('/feed', authenticateJWT, async (req, res) => {
   try {
     const user = await User.findById(req.user._id).lean();
@@ -38,7 +38,7 @@ router.get('/feed', authenticateJWT, async (req, res) => {
   }
 });
 
-// ── GET /api/posts/:id ───────────────────────────────────────────────────────
+// â”€â”€ GET /api/posts/:id â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 router.get('/:id', async (req, res) => {
   try {
     const post = await Post.findById(req.params.id)
@@ -59,7 +59,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// ── POST /api/posts ──────────────────────────────────────────────────────────
+// â”€â”€ POST /api/posts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 router.post('/', authenticateJWT, async (req, res) => {
   try {
     const { content } = req.body;
@@ -78,7 +78,7 @@ router.post('/', authenticateJWT, async (req, res) => {
   }
 });
 
-// ── PUT /api/posts/:id ───────────────────────────────────────────────────────
+// â”€â”€ PUT /api/posts/:id â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 router.put('/:id', authenticateJWT, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -98,7 +98,7 @@ router.put('/:id', authenticateJWT, async (req, res) => {
   }
 });
 
-// ── POST /api/posts/:id/like ─────────────────────────────────────────────────
+// â”€â”€ POST /api/posts/:id/like â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 router.post('/:id/like', authenticateJWT, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -122,7 +122,7 @@ router.post('/:id/like', authenticateJWT, async (req, res) => {
   }
 });
 
-// ── POST /api/posts/:postId/comments ─────────────────────────────────────────
+// â”€â”€ POST /api/posts/:postId/comments â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 router.post('/:postId/comments', authenticateJWT, async (req, res) => {
   try {
     const { content, parentCommentId } = req.body;
@@ -149,14 +149,14 @@ router.post('/:postId/comments', authenticateJWT, async (req, res) => {
   }
 });
 
-// ── DELETE /api/posts/:postId/comments/:commentId ────────────────────────────
+// â”€â”€ DELETE /api/posts/:postId/comments/:commentId â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 router.delete('/:postId/comments/:commentId', authenticateJWT, async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.commentId).populate('author');
     if (!comment) return res.status(404).json({ message: 'Comment not found' });
     
     // Allow author or admin to delete
-    if (comment.author._id.toString() !== req.user._id.toString() && req.user.email !== 'admin@resumebuilder.com') {
+    if (comment.author._id.toString() !== req.user._id.toString() && req.user.email !== 'rb.resume.app@gmail.com') {
       return res.status(403).json({ message: 'Not authorized to delete this comment' });
     }
 
@@ -170,7 +170,7 @@ router.delete('/:postId/comments/:commentId', authenticateJWT, async (req, res) 
   }
 });
 
-// ── PUT /api/posts/:postId/comments/:commentId ───────────────────────────────
+// â”€â”€ PUT /api/posts/:postId/comments/:commentId â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 router.put('/:postId/comments/:commentId', authenticateJWT, async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.commentId);
@@ -191,7 +191,7 @@ router.put('/:postId/comments/:commentId', authenticateJWT, async (req, res) => 
   }
 });
 
-// ── POST /api/posts/:postId/comments/:commentId/like ─────────────────────────
+// â”€â”€ POST /api/posts/:postId/comments/:commentId/like â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 router.post('/:postId/comments/:commentId/like', authenticateJWT, async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.commentId);

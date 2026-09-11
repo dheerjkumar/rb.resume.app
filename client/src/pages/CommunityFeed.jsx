@@ -110,7 +110,7 @@ const PostCard = ({ post: initialPost }) => {
     }
   };
 
-  const isAdmin = post.author.email === 'admin@resumebuilder.com';
+  const isAdmin = post.author.email === 'rb.resume.app@gmail.com';
   const canEditPost = currentUser && currentUser._id === post.author._id;
   const [isEditing, setIsEditing] = useState(false);
   const [editContent, setEditContent] = useState(post.content);

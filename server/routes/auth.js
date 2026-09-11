@@ -7,7 +7,12 @@ const router = express.Router();
 
 // Middleware to verify JWT token
 const authenticateJWT = (req, res, next) => {
-  const token = req.cookies.token;
+  let token = req.cookies.token;
+  const authHeader = req.headers.authorization;
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    token = authHeader.split(' ')[1];
+  }
+
   if (!token) return res.status(401).json({ message: 'Unauthorized' });
 
   jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
@@ -47,7 +52,7 @@ router.get(
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
-    res.redirect(`${process.env.CLIENT_URL}/dashboard`);
+    res.redirect(`${process.env.CLIENT_URL}/dashboard?token=${token}`);
   }
 );
 

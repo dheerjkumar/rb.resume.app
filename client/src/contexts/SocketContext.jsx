@@ -28,6 +28,7 @@ export const SocketProvider = ({ children }) => {
       const socketUrl = rawUrl.replace(/\/api\/?$/, '');
       
       newSocket = io(socketUrl, {
+        auth: { token: localStorage.getItem('token') },
         withCredentials: true
       });
       

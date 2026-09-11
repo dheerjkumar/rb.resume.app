@@ -11,7 +11,7 @@ const Comment = ({ comment, allComments, onReply, onLike, onDelete, onEdit }) =>
   const replies = allComments.filter(c => c.parentCommentId === comment._id);
   
   const canModify = currentUser && comment.author && currentUser._id === comment.author._id;
-  const canDelete = canModify || (currentUser && currentUser.email === 'admin@resumebuilder.com');
+  const canDelete = canModify || (currentUser && currentUser.email === 'rb.resume.app@gmail.com');
 
   const handleEditSubmit = () => {
     onEdit(comment._id, editContent);
@@ -144,7 +144,7 @@ const PostView = () => {
   // Filter root comments (those without a parent)
   const rootComments = comments.filter(c => !c.parentCommentId);
 
-  const isAdmin = post.author?.email === 'admin@resumebuilder.com';
+  const isAdmin = post.author?.email === 'rb.resume.app@gmail.com';
   const isFollowing = currentUser?.following?.includes(post.author?._id);
 
   const handleFollow = async () => {

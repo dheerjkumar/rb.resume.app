@@ -28,14 +28,14 @@ const seedCommunity = async () => {
     console.log('MongoDB connected for seeding...');
 
     // Look for an admin user to author the posts. If none, pick any user or create a dummy one.
-    let admin = await User.findOne({ email: 'admin@resumebuilder.com' });
+    let admin = await User.findOne({ email: 'rb.resume.app@gmail.com' });
     if (!admin) {
       // Find the first user in the DB to act as admin, or create one if db is empty
       admin = await User.findOne();
       if (!admin) {
         admin = await User.create({
           googleId: 'admin_dummy',
-          email: 'admin@resumebuilder.com',
+          email: 'rb.resume.app@gmail.com',
           name: 'RB Admin',
           picture: 'https://ui-avatars.com/api/?name=RB+Admin'
         });
