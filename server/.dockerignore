@@ -1,0 +1,10 @@
+node_modules
+.git
+.env
+tmp_pdf
+seed-assets/logos
+*.pdf
+*.aux
+*.log
+*.out
+*.tex
